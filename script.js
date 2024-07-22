@@ -23,7 +23,6 @@ let winningPairs = [
 
 boxes.forEach((box) => {
     box.addEventListener("click",()=>{
-        console.log("Box was clicked") 
     if( turn0 === true ){
         box.innerText = "0";
         turn0 = false ;
@@ -31,8 +30,9 @@ boxes.forEach((box) => {
         box.innerText = "X";
         turn0 = true ;
     }
+    console.log(turn0)
     box.disabled = true;
-
+      
     checkWinner();
     });
 });

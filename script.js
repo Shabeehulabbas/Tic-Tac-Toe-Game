@@ -5,106 +5,116 @@ let newgame = document.querySelector(".new-btn");
 let turnTracker = document.querySelector(".turntracker");
 let turn0 = true;
 
-//These are wining pares ..
-
+// These are wining pairs ...
 let winningPairs = [
-    [0,1,2],
-    [3,4,5],
-    [6,7,8],
-    [0,3,6],
-    [1,4,7],
-    [2,5,8],
-    [0,4,8],
-    [2,4,6]
-]
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+];
 
-
-// This code checks the player turn 
 let count = 0;
+let drawCount = 0;
+let playerXWins = 0;
+let player0Wins = 0;
+
+turnTracker.innerText = "Player 0's turn";
 
 boxes.forEach((box) => {
-    box.addEventListener("click",()=>{
-    if( turn0 === true ){
-        box.innerText = "0";
-        turnTracker.innerText = "X";
-        turn0 = false ;
-        count++
-    }else{
-        box.innerText = "X";
-        turn0 = true ;
-        turnTracker.innerText = "0";
-        count++
-    }
-    box.disabled = true;
-      
-    checkWinner();
-    
-//This checks wather the game is draw
-console.log(count)
-    if( count === 9 ){
-      msg.classList.remove("hide")
-      console.log("draw")
-      msg.innerText = "Draw";
-    }
+    box.addEventListener("click", () => {
+        if (turn0 === true) {
+            box.innerText = "0";
+            turnTracker.innerText = "Player X's turn";
+            turn0 = false;
+            count++;
+            box.style.color = "var(--aqua)";
+        } else {
+            box.innerText = "X";
+            turnTracker.innerText = "Player 0's turn";
+            turn0 = true;
+            count++;
+            box.style.color = "var(--yellowish)";
+        }
+
+        box.disabled = true;
+
+        checkWinner();
+
+        // This checks whether the game is a draw...
+        if (count === 9 && !checkWinner()) {
+            drawCount++;
+            updateWinnerCount();
+            turnTracker.style.visibility = "hidden";
+        }
     });
 });
 
-//this function resets the game
-
-const resetgame = () =>{
-    let turn0 = true;
+// This function resets the game ...
+const resetgame = () => {
+    turn0 = true;
     enablebtns();
-    msg.classList.add("hide")
     count = 0;
-}
+    turnTracker.style.visibility = "visible";
+    turnTracker.innerText = "Player 0's turn"; // Reset turn tracker to initial state
+};
 
-//When the game is over this disables the buttons so that no new winners can occure...
-
-const disablebtns = () =>{
-    for( let box of boxes ){
-        box.disabled = true ;
+// When the game is over this disables the buttons so that no new winners can occur...
+const disablebtns = () => {
+    for (let box of boxes) {
+        box.disabled = true;
     }
-}
+};
 
-//This again shows enables the buttons...
-
-const enablebtns = () =>{
-    for( let box of boxes ){
+// This again enables the buttons...
+const enablebtns = () => {
+    for (let box of boxes) {
         box.disabled = false;
-        box.innerText ="";
+        box.innerText = "";
     }
-}
+};
 
-//This function shows the winner
-
+// This function shows the winner ...
 const showWinner = (winner) => {
-    msg.innerText = `winner is ${winner}`;
-    msg.classList.remove("hide")
     disablebtns();
-}
+    updateWinnerCount(winner);
+    turnTracker.style.visibility = "hidden";
+};
 
+// Function to update the winner count ...
+const updateWinnerCount = (winner) => {
+    if (winner === "X") {
+        playerXWins++;
+    } else if (winner === "0") {
+        player0Wins++;
+    }
 
-//This function checks who is the winner
+    // To show wins and draws
+    document.querySelector(".count-draw").innerText = drawCount;
+    document.querySelector(".count-player0").innerText = player0Wins;
+    document.querySelector(".count-playerX").innerText = playerXWins;
+};
 
+// This function checks who is the winner ...
 const checkWinner = () => {
-     for (let pattrens of winningPairs ){
-                 val1 = boxes[pattrens[0]].innerText;
-                let val2 = boxes[pattrens[1]].innerText;
-                let val3 = boxes[pattrens[2]].innerText;
-                
-//This insures that all buttons are checked then check for...
+    for (let patterns of winningPairs) {
+        let val1 = boxes[patterns[0]].innerText;
+        let val2 = boxes[patterns[1]].innerText;
+        let val3 = boxes[patterns[2]].innerText;
 
-                if( val1 != "" && val2 != "" && val3 != "" ){
-                    if( val1 === val2 && val2 === val3 ){
+        // This ensures that all buttons are checked then check for...
+        if (val1 !== "" && val2 !== "" && val3 !== "") {
+            if (val1 === val2 && val2 === val3) {
+                showWinner(val1);
+                return true; // Winner found
+            }
+        }
+    }
+    return false; // No winner
+};
 
-                       showWinner(val1);
-                       turnTracker.style.display = "none"
-                    }
-                 }   
-     }
-     
-}
-
-reset.addEventListener("click",resetgame)
-newgame.addEventListener("click",resetgame)
-
+reset.addEventListener("click", resetgame);
+newgame.addEventListener("click", resetgame);

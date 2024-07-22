@@ -10,9 +10,23 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <p class = "turntracker" ></p>
     <div class="game">
-            <h2 class = "winner hide " >winner</h2>
+ 
+        <div class = "winstracker" >
+            <div class="player0">
+                <p class="player">PLAYER 0</p>
+                <h3 class="count-player0">0</h3>
+            </div>
+            <div class="draws">
+                <p class="player">DRAWS</p>
+                <h3 class="count-draw">0</h3>
+            </div>
+            <div class="playerx">
+                <p class="player">PLAYER X</p>
+                <h3 class="count-playerX">0</h3>
+            </div>
+        </div>
+        <p class = "turntracker"></p>
         <div class="play-buttons">
             <button class = "box" ></button>
             <button class = "box" ></button>
@@ -31,9 +45,9 @@
     </div>
 
     <div class = "headings" >
-       <h3 class = "tic" >tic</h3>
-       <h3 class = "tac" >tac</h3>
-       <h3 class = "toe" >toe</h3>
+       <h3 class = "tic" >tic.</h3>
+       <h3 class = "tac" >tac.</h3>
+       <h3 class = "toe" >toe.</h3>
     </div>
     <script src="script.js"></script>
 </body>

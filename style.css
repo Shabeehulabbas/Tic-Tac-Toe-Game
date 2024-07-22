@@ -50,11 +50,14 @@ body{
 .game{
     background-color: var(--controler);
     width:400px;
-    margin: 10% auto;
+    justify-self: center;
+    align-self: center;
     border-radius: 20px;
     padding:40px 60px;
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
+    margin-top: 5vmin;
     
 }
 .play-buttons {
@@ -68,8 +71,9 @@ body{
    border-radius:6px;
    border: none;
    background-color: var(--purple);
-   font-size: 30px;
+   font-size: 35px;
    color: white;
+   font-weight: 600;
 }
 .hide{
     visibility: hidden;
@@ -111,3 +115,37 @@ button.reset-btn {
     text-align: center;
 }
 
+.winstracker{
+    display: flex;
+    flex-wrap: wrap;
+    color:black;
+    justify-content: space-between;
+    padding:0 10px;
+}
+
+.player0 ,.playerx,.draws{
+    flex: 0 0 calc(33.333% - 10px);
+    text-align: center;
+    padding: 10px;
+    line-height: 25px;
+    border-radius: 6px;
+}
+.player0{
+    background-color: var(--aqua);
+}
+.draws{
+    background-color: rgb(185, 180, 180);
+}
+.playerx{
+    background-color: var(--yellowish);
+}
+.player{
+    font-size:12px;
+    font-weight: 500;
+}
+.turntracker{
+    color: white;
+    text-align: center;
+    font-size: 22px;
+    margin:20px 0;
+}

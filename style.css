@@ -15,14 +15,29 @@
 body{
     background-color: var(--purple);
 }
+
 .headings{
     font-size: var(--h1-size);
     line-height: 150px;
     font-weight: 500;
-    bottom:55px;
+    bottom:0;
     left: -35px;
-    position: absolute;
+    position: fixed;
+    z-index: -1;
+    animation: headings-animation 2s infinite ease;
 }
+@keyframes headings-animation {
+    0%{
+        transform:translateY(0);  
+    }
+    50%{
+        transform:translateY(-100%);     
+    }
+    100%{
+        transform:translateY(0); 
+    }
+}
+
 .tic{
      color: var(--yellowish);
 }
@@ -35,13 +50,12 @@ body{
 .game{
     background-color: var(--controler);
     width:400px;
-    margin: 0 auto;
-    height: 60vh;
+    margin: 10% auto;
     border-radius: 20px;
-    margin-top: 10%;
     padding:40px 60px;
     display: flex;
     flex-direction: column;
+    
 }
 .play-buttons {
     display: flex;
@@ -63,8 +77,8 @@ body{
 .controls{
     display: flex;
     align-items: center;
-    margin-top: 40px;
-    justify-content: space-between;
+    margin: 40px 0;
+    justify-content:space-between;
     padding:0 30px;
 }
 
@@ -94,5 +108,6 @@ button.reset-btn {
     margin:30px auto;
     border-radius: 10px;
     color: white;
+    text-align: center;
 }
 

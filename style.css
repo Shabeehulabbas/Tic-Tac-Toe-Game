@@ -1,0 +1,98 @@
+*{
+    padding :0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Fredoka", sans-serif;
+}
+:root{
+    --purple:#5A1E76;
+    --controler:#2B0040;
+    --aqua:aqua;
+    --yellowish:#DCBF3F;
+    --h1-size:180px;
+}
+
+body{
+    background-color: var(--purple);
+}
+.headings{
+    font-size: var(--h1-size);
+    line-height: 150px;
+    font-weight: 500;
+    bottom:55px;
+    left: -35px;
+    position: absolute;
+}
+.tic{
+     color: var(--yellowish);
+}
+.tac{
+    color: var(--aqua);
+}
+.toe{
+    color: var(--yellowish);
+}
+.game{
+    background-color: var(--controler);
+    width:400px;
+    margin: 0 auto;
+    height: 60vh;
+    border-radius: 20px;
+    margin-top: 10%;
+    padding:40px 60px;
+    display: flex;
+    flex-direction: column;
+}
+.play-buttons {
+    display: flex;
+    flex-wrap: wrap;
+}
+.box{
+   flex:0 0 calc(33.333% - 20px);
+   margin:10px;
+   height: 70px;
+   border-radius:6px;
+   border: none;
+   background-color: var(--purple);
+   font-size: 30px;
+   color: white;
+}
+.hide{
+    visibility: hidden;
+}
+.controls{
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+    justify-content: space-between;
+    padding:0 30px;
+}
+
+button.reset-btn {
+    flex: 0 0 calc(50% - 10px);
+    padding: 10px;
+    border-radius: 7px;
+    border: none;
+    align-self: center;
+    font-weight: 600;
+    background-color: var(--aqua);
+}
+.new-btn{
+    flex: 0 0 calc(50% - 10px);
+    padding: 10px;
+    border-radius: 7px;
+    border: none;
+    align-self: center;
+    font-weight: 600;
+    background-color: var(--yellowish);
+}
+.winner{
+    background-color: grey;
+    padding:10px;
+    justify-self: center;
+    width:50%;
+    margin:30px auto;
+    border-radius: 10px;
+    color: white;
+}
+

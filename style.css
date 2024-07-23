@@ -24,7 +24,7 @@ body{
     left: -35px;
     position: fixed;
     z-index: -1;
-    animation: headings-animation 2s infinite ease;
+    animation: headings-animation 2s 2 ease;
 }
 @keyframes headings-animation {
     0%{

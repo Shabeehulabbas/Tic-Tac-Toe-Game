@@ -55,11 +55,9 @@ boxes.forEach((box) => {
 
 // This function resets the game ...
 const resetgame = () => {
-    turn0 = true;
     enablebtns();
     count = 0;
     turnTracker.style.visibility = "visible";
-    turnTracker.innerText = "Player 0's turn"; // Reset turn tracker to initial state
 };
 
 // When the game is over this disables the buttons so that no new winners can occur...
@@ -110,6 +108,7 @@ const checkWinner = () => {
             if (val1 === val2 && val2 === val3) {
                 showWinner(val1);
                 return true; // Winner found
+                
             }
         }
     }

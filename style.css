@@ -11,9 +11,11 @@
     --yellowish:#DCBF3F;
     --h1-size:180px;
 }
-
 body{
     background-color: var(--purple);
+    height: 100vh;
+    display: block;
+    position: relative;
 }
 
 .headings{
@@ -49,16 +51,16 @@ body{
 }
 .game{
     background-color: var(--controler);
-    width:400px;
-    justify-self: center;
-    align-self: center;
+    width: 100%;
+    max-width:400px;
     border-radius: 20px;
-    padding:40px 60px;
+    padding:55px;
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
-    margin-top: 5vmin;
-    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
 }
 .play-buttons {
     display: flex;
@@ -81,7 +83,7 @@ body{
 .controls{
     display: flex;
     align-items: center;
-    margin: 40px 0;
+    margin: 40px 0 0 0;
     justify-content:space-between;
     padding:0 30px;
 }
@@ -120,7 +122,6 @@ button.reset-btn {
     flex-wrap: wrap;
     color:black;
     justify-content: space-between;
-    padding:0 10px;
 }
 
 .player0 ,.playerx,.draws{
@@ -148,4 +149,66 @@ button.reset-btn {
     text-align: center;
     font-size: 22px;
     margin:20px 0;
+}
+
+@media screen and (max-width:1023px) {
+    .game {
+        max-width: 360px;
+        padding: 40px 50px;
+    }
+    
+    button.box {
+        height: 60px;
+    }
+    
+    .player0 ,.playerx,.draws{
+        line-height: 20px;
+    }
+    
+    h3.count-player0,h3.count-draw,h3.count-playerX {
+        font-size: 15px;
+    }
+    .headings {
+        font-size: 150px;
+        line-height: 130px;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .game {
+        max-width: 335px;
+        padding: 40px 35px;
+    }
+    .headings {
+        font-size: 130px;
+        line-height: 112px;
+    }
+}
+@media screen and (max-width:425px) {
+    .game {
+        max-width: 300px;
+        padding: 45px 40px;
+    }
+    p.player {
+        font-size: 8px;
+    }
+    button.box {
+        border-radius: 6px;
+        flex: 0 0 calc(33.333% - 15px);
+        height: 55px;
+        margin: 10px 7.5px;
+    }
+p.player {
+    font-size: 8px;
+}
+
+.controls button {
+    font-size: 10px;
+}
+.headings {
+    font-size: 100px;
+    line-height: 90px;
+    left: -12px;
+}
+    
 }
